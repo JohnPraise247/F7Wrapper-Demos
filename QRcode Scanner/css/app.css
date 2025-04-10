@@ -1,0 +1,23 @@
+:root {
+    --f7-navbar-bg-color: var(--f7-md-surface);
+    --f7-page-parallax-transition-duration: 160ms;
+}
+
+.navbar {
+    border-bottom: solid 1px #89898933;
+}
+
+.font-bold {
+    font-weight: 500;
+}
+
+.overflow-hidden{
+    overflow:hidden;
+    margin-bottom:100px;
+}
+
+.truncate{
+    white-space: nowrap;
+    overflow: hidden;
+   text-overflow: ellipsis;
+}

@@ -1,0 +1,98 @@
+<div class="page" data-name="scan">
+    <style>
+        #reader {
+            width: 100%;
+            visibility: hidden;
+        }
+        .page-content {
+            position: relative;
+        }
+        .infoTxt {    
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+            visibility: hidden;
+        }
+    </style>
+    <div class="page-content">
+        <div id="reader"></div>
+        <span class="infoTxt">Scan the QR code using your camera to proceed</span>
+    </div>
+</div>
+<script>
+    let html5QrCode;
+    $$(document).on("page:init", '.page[data-name="scan"]', () => {
+        f7App.progressbar.show();
+    });
+    
+    $$(document).on("page:beforein", '.page[data-name="scan"]', () => {
+        html5QrCode = new Html5Qrcode("reader");
+        
+        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+            try {
+                let scanList = loadHistory();
+                let newScan = { text: decodedText };
+                
+                scanList.push(newScan);
+                saveHistory(scanList);
+                
+                app.Vibrate("0,200");
+                
+                f7App.dialog.create({
+                    title: "Copy text",
+                    text: decodedText,
+                    buttons: [{text: "Copy", bold: true, keyCodes: [13]}],
+                    onClick(dialog, index) {
+                        if(index === 0) {
+                            app.SetClipboardText(decodedText);
+                            app.ShowPopup("Copied");
+                        }
+                    },
+                    destroyOnClose: true,
+                }).open();
+                
+                f7View.router.back();
+                loadList();
+            } catch(e) {
+                alert(e);
+            }
+        };
+        
+        const config = {
+            fps: 10,
+            aspectRatio: app.GetDisplayHeight() / app.GetDisplayWidth(),
+            qrbox: {
+                width: 250,
+                height: 250
+            }
+        };
+        
+        html5QrCode.start({
+            facingMode: "environment"
+        }, config, qrCodeSuccessCallback);
+        
+        let interval = setInterval(() => {
+            if(html5QrCode.isScanning) {
+                clearInterval(interval);
+                f7App.progressbar.hide();
+                $$("#reader, .infoTxt").css("visibility", "visible");
+            }
+        }, 500);
+    });
+    
+    $$(document).on("page:beforeout", '.page[data-name="scan"]', () => {
+        html5QrCode.stop();
+        f7App.progressbar.hide();
+    });
+    
+    $$(document).on("page:afterout", '.page[data-name="scan"]', () => {
+        f7App.progressbar.hide();
+    });
+</script>
