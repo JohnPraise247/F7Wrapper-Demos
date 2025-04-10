@@ -1,0 +1,155 @@
+<div class="page" data-name="edit">
+    <style scoped>
+        /* Page Layout */
+        .page-content {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Full viewport height */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+
+        /* Input Styling */
+        .input-sizer {
+            display: inline-grid;
+            align-items: center;
+            position: relative;
+            font-size: 18px;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        .input-sizer.stacked {
+            align-items: stretch;
+        }
+
+        .input-sizer.stacked::after,
+        .input-sizer.stacked textarea {
+            grid-area: 2 / 1;
+        }
+
+        .input-sizer::after,
+        .input-sizer textarea {
+            width: auto;
+            min-width: 1em;
+            grid-area: 1 / 2;
+            font: inherit;
+            padding: 0.25em;
+            margin: 0;
+            resize: none;
+            background: none;
+            border: none;
+            appearance: none;
+        }
+
+        .input-sizer::after {
+            content: attr(data-value) " ";
+            visibility: hidden;
+            white-space: pre-wrap;
+        }
+
+        .input-sizer:focus-within textarea:focus {
+            outline: none;
+        }
+
+        /* Note Content */
+        #noteContent {
+            flex-grow: 1;
+            width: 100%;
+            font-size: 16px;
+            padding: 15px 10px;
+        }
+    </style>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="/home/" class="link back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </div>
+            <div class="title">Edit Note</div>
+            <div class="right">
+                <a href="#" class="link" id="saveNote">
+                    <i class="f7-icons">checkmark</i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="block">
+            <!-- Title Input -->
+            <div class="input-sizer stacked">
+                <textarea 
+                    id="noteTitle" 
+                    placeholder="Title" 
+                    maxlength="200" 
+                    rows="1" 
+                    oninput="resizeInput(this)" 
+                    onkeydown="return preventEnter(event)">
+                </textarea>
+            </div>
+        </div>
+        
+        <!-- Note Content -->
+        <div class="container">
+            <textarea 
+                id="noteContent" 
+                placeholder="Note something down"
+                oninput="toggleSaveButton()"
+                style="height: 100%;">
+            </textarea>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Dynamically adjust the width of the textarea based on content
+    function resizeInput(textarea) {
+        textarea.parentNode.dataset.value = textarea.value;
+        toggleSaveButton();
+    }
+
+    // Prevent Enter key inside title field
+    function preventEnter(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    }
+
+    // Toggle save button visibility based on content
+    function toggleSaveButton() {
+        const titleEmpty = document.getElementById("noteTitle").value.trim().length === 0;
+        const contentEmpty = document.getElementById("noteContent").value.trim().length === 0;
+        document.getElementById("saveNote").style.display = titleEmpty && contentEmpty ? "none" : "block";
+    }
+
+    // Page event listener
+    $$(document).on("page:beforein",'.page[data-name="edit"]', function (e,page) {
+
+        const titleField = document.getElementById("noteTitle");
+        if (titleField.value.trim().length > 0) {
+            titleField.parentNode.dataset.value = titleField.value;
+        }
+
+        if (page.route.params.id === "new") {
+          $$(".page[data-name='edit'] .title").text("New note")
+       
+        }
+
+        toggleSaveButton();
+    });
+
+    // Expose functions globally
+    globalThis.resizeInput = resizeInput;
+    globalThis.preventEnter = preventEnter;
+    globalThis.toggleSaveButton = toggleSaveButton;
+</script>

@@ -1,0 +1,49 @@
+<div class="panel panel-left panel-cover panel-init">
+    <div class="page page-accounts">
+        <div class="page-content">
+            <!-- App Logo Section -->
+            <div class="block-title panel-logo">
+                <div class="display-flex">
+                    <img 
+                        alt="logo" 
+                        src="Img/MyNotes.png" 
+                        width="64" 
+                        onerror="this.src = app.RealPath('Img/MyNotes.png')" 
+                    />
+                    <p class="title">MyNotes</p>
+                </div>
+            </div>
+
+            <!-- Navigation List -->
+            <div class="list no-chevron">
+                <ul>
+                    <div class="list list-outline-ios list-strong-ios list-dividers-ios"></div>  
+
+                    <!-- Toggle Theme Option -->
+                    <li>
+                        <a id="toggleTheme" href="#" class="item-content item-link panel-close" onclick="toggleMode()">
+                            <div class="item-media">
+                                <i class="icon f7-icons">circle_lefthalf_fill</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Toggle mode</div>
+                            </div>
+                        </a>
+                    </li>  
+
+                    <!-- About Section -->
+                    <li>
+                        <a href="#" class="item-content item-link panel-close" data-transition="f7-cover" onclick="showAbout()">
+                            <div class="item-media">
+                                <i class="icon f7-icons">question_circle</i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">About</div>
+                            </div>
+                        </a>
+                    </li>  
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

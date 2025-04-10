@@ -1,0 +1,49 @@
+:root {
+    --f7-block-margin-vertical: 10px;
+    --f7-page-parallax-transition-duration: 200ms;
+}
+
+/* Global Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Note Content Formatting */
+.note-content {
+    max-width: 100%;  /* Ensures it doesn't exceed the parent container */
+    white-space: nowrap;  /* Prevents text from wrapping */
+    overflow: hidden;  /* Hides overflowing text */
+    text-overflow: ellipsis;  /* Adds "..." when the text overflows */
+}
+
+/* Adjust Note List Spacing */
+#noteList {
+    padding-bottom: 50px;
+}
+
+/* Panel Styles */
+.panel {
+    width: 70vw;
+    max-width: 480px; /* Limit resizable panel width */
+}
+
+/* Panel Logo Styling */
+.panel-logo {
+    padding: 40px 0;
+    border-radius: 8px;
+    color: #fff;
+    border: solid 1px #89898922;
+    display: flex;
+    justify-content: center;
+}
+
+/* Panel Logo Title */
+.panel-logo .title {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Light Mode: Panel Logo Title Color */
+.light .panel-logo .title {
+    color: #222;
+}

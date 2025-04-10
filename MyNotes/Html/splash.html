@@ -1,0 +1,46 @@
+<div class="page no-swipe-panel" data-name="splash">
+  <style scoped>
+    .margin-auto {
+      margin: auto;
+    }
+
+    .scale-up {
+      animation: scaleUp 0.4s ease-out;
+      margin-right: 0.8rem;
+    }
+
+    @keyframes scaleUp {
+      0% {
+        transform: translate(0, 30px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <div class="page-content display-flex">
+    <div class="margin-auto">
+      <img id="logo" src="Img/MyNotes.png" class="scale-up" width="96" />
+    </div>
+  </div>
+</div>
+
+<script>
+  $$(document).on("page:mounted",'.page[data-name="splash"]', ()=>{
+    let theme = app.LoadText("mode", "", "fileMN") ;
+    f7App.setDarkMode(theme === "light"?false:true);
+      $$("#logo").on("error",()=>{
+            $$("#logo").prop("src", app.RealPath("Img/MyNotes.png"))
+        })
+})
+
+  $$(document).on("page:afterin",'.page[data-name="splash"]', function () {
+    setTimeout(() => {
+      f7View.router.navigate('/home', { animate: false });
+    }, 2000);
+  });
+</script>
