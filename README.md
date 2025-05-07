@@ -6,61 +6,61 @@ Explore what you can build with [F7Wrapper](https://ds.justplayer.de/projects/f7
 Below are the current demo apps included in this repository, showcasing different capabilities of F7Wrapper:
 
 ---
-
 ### Dialogs
 
-**Description:**
+**Description:**  
 Demonstrates various Framework7 dialogs.
 
-**Screenshot:**
-![Dialogs Demo](screenshots/dialogs.jpg)
+**Screenshot:**  
+<img src="screenshots/dialogs.jpg" alt="Dialogs Demo" height="300">
 
 ---
 
 ### Lottie
 
-**Description:**
+**Description:**  
 Integrates Lottie animations.
 
-**Screenshot:**
-![Lottie Demo](screenshots/lottie.jpg)
+**Screenshot:**  
+<img src="screenshots/lottie.jpg" alt="Lottie Demo" height="300">
 
 ---
 
 ### MyNotes
 
-**Description:**
+**Description:**  
 A simple note-taking app.
 
-**Screenshot:**
-![MyNotes Demo](screenshots/mynotes.jpg)
+**Screenshot:**  
+<img src="screenshots/mynotes.jpg" alt="MyNotes Demo" height="300">
 
 ---
 
 ### QRCode Scanner
 
-**Description:**
+**Description:**  
 Scans QR codes using device camera.
 
-**Screenshot:**
-![QR Scanner Demo](screenshots/qrcode-scanner.jpg)
+**Screenshot:**  
+<img src="screenshots/qrcode-scanner.jpg" alt="QR Scanner Demo" height="300">
 
 ---
 
 ### Sound Meter
 
-**Description:**
+**Description:**  
 Measures ambient sound levels using your device microphone.
 
-**Screenshot:**
-![Sound Meter Demo](screenshots/sound-meter.jpg)
+**Screenshot:**  
+<img src="screenshots/sound-meter.jpg" alt="Sound Meter Demo" height="300">
 
 ---
 
 ### Swipable Tabs
 
-**Description:**
+**Description:**  
 Showcases swipeable tab navigation using Framework7 components.
 
-**Screenshot:**
-![Swipable Tabs Demo](screenshots/swipeable-tabs.jpg)
+**Screenshot:**  
+<img src="screenshots/swipeable-tabs.jpg" alt="Swipable Tabs Demo" height="300">
+
