@@ -1,0 +1,49 @@
+/* TodoList/Html/css/style.css */
+
+/* Completed Todo Item Styling */
+.completed-todo .item-title {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #555; /* Darker gray for better readability with line-through */
+}
+
+/*
+   If you want to style the entire list item (including icons) when completed,
+   you could use:
+*/
+/*
+.completed-todo {
+    opacity: 0.7;
+}
+.completed-todo .item-inner,
+.completed-todo .item-title,
+.completed-todo .item-after a {
+    color: #888;
+}
+.completed-todo .item-title {
+    text-decoration: line-through;
+}
+*/
+
+
+/* Optional: FAB Icon Color */
+/* Framework7 themes usually handle this well, but if needed: */
+/*
+.fab a {
+    color: white;
+}
+.fab i.f7-icons {
+    color: white;
+}
+*/
+
+/* Optional: Basic List Item Styling */
+/*
+.list .item-content {
+    padding-left: 10px;
+}
+.list .item-inner {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+*/
